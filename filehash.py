@@ -4,6 +4,7 @@
 #  PATREON         MARS JANUS AND JUNO                                                             #
 ####################################################################################################
 import hashlib
+from seedgen import seed_gen
 ## file hash pulls a table from seedgen.py
 ## input the file name including the path to that file
 ## size of the file
@@ -26,16 +27,14 @@ def hash_file(filename: object) -> object:
     return h.hexdigest()
 # filehash
 message1 = hash_file("seedgen.py")
-message2 = hash_file("seedgen-files/seedgenTX.txt")
+message2 = hash_file("seedgenTX.txt")
 message3 = hash_file("filehash.py")
-message4 = hash_file("seedgen_png.py")
+message4 = seed_gen
 # previous_seed = last_int
 filehash = [message1, message2, message3, message4]
-print("-----file-----|----------------------------------hash---------------------------")
-print("seedgen       :",message1)
-print("seedgenTX     :",message2)
-print("filehash      :",message3)
-print("seedgen-png.py:",message4)
-print("--------------------------------------------------------------------------------")
-print("table writen to a json file")
-print("file hash table:",filehash)
+
+print("seedgen:\t\t",message1)
+print("seedgenTX:\t\t",message2)
+print("filehash:\t\t",message3)
+print("seed_gen\t\t:",message4)   
+

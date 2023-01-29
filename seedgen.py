@@ -25,6 +25,7 @@ ranOne = a + b + c + d + e + f
 ranTwo = a + 1 + b + 2 + c + 3 + d + 4 + e + 5 + f + 6
 ranThree = a + 1 + 3 + b + 2 + 5 + c + 3 + 7 + d + 4 + 11 + e + 5 + 13 + f + 6 + 17
 
+
 # seedOne is 16 in length
 seedOne = ranOne * 16 * 2 ** 256
 # seedTwo is 32 in length
@@ -32,7 +33,7 @@ seedTwo = ranTwo * 32 * 2 ** 256
 # seedThr is 64 in length
 seedThr = ranThree * 64 * 2 ** 256
 # length of between 1000 1500
-seed_gen = ranOne + seedOne + ranTwo + seedTwo + ranThree + seedThr * 16 ** 512
+seed_gen = str(ranOne + seedOne + ranTwo + seedTwo + ranThree + seedThr * 16 ** 256)
 # values and keys for the blk_1, blk_2, blk_3
 blk_1_seed_1 = ranOne + seedOne + a + b       # 16 in length
 blk_2_seed_2 = ranTwo + seedTwo + c + d       # 32 in length
@@ -59,6 +60,17 @@ blk_3 = {
 }
 
 
+#sha512 hash for randOne
+#whitch is exported to blockchain
+
+aa = hashlib.sha512()
+aa.update(str(ranOne).encode('utf-8'))
+aa.hexdigest()
+print(aa.hexdigest())
+
+f = open("D:/mmm/lenz-main/medusa/seedgenTX.txt", 'w')
+f.writelines(seed_gen)
+f.close()
 print("****"*40)
 #print("seedlocktest:",seedlocktest)
 print("ranZero:",ranZero)
@@ -74,3 +86,4 @@ print("blk_1:",blk_1)
 print("blk_2:",blk_2)
 print("blk_3:",blk_3)
 print("****"*40)
+print("seed_gerated:", seed_gen)
