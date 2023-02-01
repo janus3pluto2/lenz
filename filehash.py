@@ -1,7 +1,7 @@
 ####################################################################################################
 #  janeZero        part of the seedgen file that makes sure no on edits the file without specified #
 #                  software.                                                                       #
-#  PATREON         MARS JANUS AND JUNO                                                             #
+#                                                             #
 ####################################################################################################
 import hashlib
 from seedgen import seed_gen
