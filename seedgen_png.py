@@ -1,6 +1,6 @@
 from PIL import Image
 
-img = Image.open("F:/nicole&cveta/vlad.jpg")
+img = Image.open("Image")
 rgba = img.convert("RGBA")
 datas = rgba.getdata()
 newData = []
