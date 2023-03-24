@@ -3,12 +3,14 @@
 # modals that come with python v3.9
 import random
 import hashlib
+
+
 # random number generator
 #seedlocktest = int(3301)
 #random.seed(seedlocktest)
 x = []  # list
-
-for i in range(6):
+# seed genarator loop creates six numbers
+for ii in range(6):
     A = random.randint(11, 99)
     x.append(A)
 
@@ -34,6 +36,7 @@ seedTwo = ranTwo * 32 * 2 ** 256
 seedThr = ranThree * 64 * 2 ** 256
 # length of between 1000 1500
 seed_gen = str(ranOne + seedOne + ranTwo + seedTwo + ranThree + seedThr * 16 ** 256)
+seed_gen_int = int(ranOne + seedOne + ranTwo + seedTwo + ranThree + seedThr * 16 ** 256)
 # values and keys for the blk_1, blk_2, blk_3
 blk_1_seed_1 = ranOne + seedOne + a + b       # 16 in length
 blk_2_seed_2 = ranTwo + seedTwo + c + d       # 32 in length
@@ -63,13 +66,18 @@ blk_3 = {
 #sha512 hash for randOne
 #whitch is exported to blockchain
 
-aa = hashlib.sha512()
-aa.update(str(ranOne).encode('utf-8'))
-aa.hexdigest()
-print(aa.hexdigest())
+origin_seed = hashlib.sha512()
+origin_seed.update(str(ranZero).encode('utf-8'))
+origin_seed.hexdigest()
+hsh = origin_seed.hexdigest()
 
-f = open("D:/mmm/lenz-main/medusa/seedgenTX.txt", 'w')
+f = open("E:/mmm/lenz-main/medusa/lenz-v0-0-1/seedgenTX.txt", 'w')
+f.writelines("seed : ")
 f.writelines(seed_gen)
+f.writelines("\n")
+f.writelines("data for Merkle root : ")
+f.writelines(origin_seed.hexdigest())
+
 f.close()
 print("****"*40)
 #print("seedlocktest:",seedlocktest)
@@ -87,3 +95,4 @@ print("blk_2:",blk_2)
 print("blk_3:",blk_3)
 print("****"*40)
 print("seed_gerated:", seed_gen)
+print("origin key",origin_seed.hexdigest())
