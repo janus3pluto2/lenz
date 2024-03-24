@@ -1,28 +1,40 @@
-# chain is your difficulty level
-from chain import Chain
-from main_seedgen import token_seed_en
+####################################################################################################
+#  janeZero        part of the seedgen file that makes sure no on edits the file without specified #
+#                  software.                                                                       #
+#  PATREON         MARS JANUS AND JUNO                                                             #
+####################################################################################################
+import hashlib
+from seedgen import seed_gen_int
+## file hash pulls a table from main.py
+## input the file name including the path to that file
+## size of the file
 
+def hash_file(filename: object) -> object:
+    # This function returns the SHA-256 hash
+    # of the file passed into it
+    # make a hash object
+    # h is your ranZero bash
+    h = hashlib.sha256(b'3301')
+    # open file for reading in binary mode
+    with open(filename, 'rb') as file:
+        ## loop till the end of the file
+        chunk = 0
+        while chunk != b'':
+            ## read only 1024 bytes at a time
+            chunk = file.read(10000)
+            h.update(chunk)
+    ## return the hex representation of digest
+    return h.hexdigest()
+# filehash
+message1 = hash_file("/workspaces/lenz/main.py")
+message2 = hash_file("/workspaces/lenz/seedgen-files/seedgenTX.txt")
+message3 = hash_file("/workspaces/lenz/filehash.py")
+message4 = seed_gen_int
+# previous_seed = last_int
+filehash_t = [message1, message2, message3, message4]
 
-i = 0
+print("main:\t\t",message1)
+print("seedgenTX:\t\t",message2)
+print("filehash:\t\t",message3)
+print("seed_gen\t\t:",message4)   
 
-chain = Chain(20)
-
-
-while(True):
-
-    ## data is your holds you token_seed_en is your recovery key for your seedgen also your mircleroot
-    ## 
-    data = (token_seed_en, i,'''input("user name:\t\t"), input("password:\t\t")''')
-
-    ## adds data to a pool list in a chain modual to be mind
-    chain.add_to_pool(str(data))
-
-    ## the minning from the pool list
-    chain.mine()
-
-    ## the chain.mind get put on the chain
-    if i % 13 == 0:
-        print('block',chain.blocks[i])
-    i += 1
-    print("\n")
-    print("mined:\t",chain.blocks[i])
