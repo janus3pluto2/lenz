@@ -71,7 +71,7 @@ origin_seed.update(str(ranZero).encode('utf-8'))
 origin_seed.hexdigest()
 hsh = origin_seed.hexdigest()
 
-f = open("E:/mmm/lenz-main/medusa/lenz-v0-0-1/seedgenTX.txt", 'w')
+f = open("/workspaces/lenz/seedgen-files/seedgenTX.txt", 'w')
 f.writelines("seed : ")
 f.writelines(seed_gen)
 f.writelines("\n")
